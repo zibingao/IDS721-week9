@@ -1,1 +1,1 @@
-pipe install streamlit transformers
+pip3 install streamlit transformers
