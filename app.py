@@ -3,7 +3,7 @@ from transformers import pipeline
 
 st.title('Hugging Face LLM Streamlit App')
 
-generator = pipeline('text-generation', model='gpt-2')
+generator = pipeline('text-generation', model='openai-gpt')
 user_input = st.text_input("Type a sentence...")
 
 if st.button('Generate Text'):
