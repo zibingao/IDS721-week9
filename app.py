@@ -1,11 +1,25 @@
 import streamlit as st
 from transformers import pipeline
 
-st.title('Hugging Face LLM Streamlit App')
+# Load the language model
+model = pipeline("text-generation", model="openai-gpt")
 
-generator = pipeline('text-generation', model='openai-gpt')
-user_input = st.text_input("Type a sentence...")
 
-if st.button('Generate Text'):
-    generated_text = generator(user_input, max_length=100)[0]['generated_text']
-    st.text_area("Generated Text", value=generated_text, height=250)
+# Define Streamlit app
+def main():
+    st.title("Language Model Deployment with Streamlit")
+    text_input = st.text_area("Enter text to generate continuation:")
+
+    if st.button("Generate"):
+        if text_input:
+            generated_text = model(text_input, max_length=50, do_sample=True)[0][
+                "generated_text"
+            ]
+            st.write("Generated Text:")
+            st.write(generated_text)
+        else:
+            st.warning("Please enter some text first.")
+
+
+if __name__ == "__main__":
+    main()
