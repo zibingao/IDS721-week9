@@ -1,3 +1,1 @@
-### dependency
-streamlit
-
+pip install streamlit transformers
